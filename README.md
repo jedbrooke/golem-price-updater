@@ -32,3 +32,6 @@ optional arguments:
   -t THREADS, --threads THREADS
                         number of threads on golem provider (default is all threads)
 ```
+
+
+Pricing Data provided by CoinGecko
