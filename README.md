@@ -16,21 +16,23 @@ set this file to run as a cron job every hour (or as often as you see fit)
 
 for a full list of options see `golem-price-update.py --help`
 ```
-usage: golem-price-update.py [-h] [--currency CURRENCY] [--price_kwh PRICE_KWH] [-w WATTS] [-p PROFIT] [-t THREADS]
+usage: golem-price-update.py [-h] [--currency CURRENCY] [--price_kwh PRICE_KWH] [-w WATTS] [-p PROFIT] [-t THREADS] [--dry_run]
 
-automatically adjust golem provider prices
+automatically adjust golem provider prices. GLM Price provided by CoinGecko
 
 optional arguments:
   -h, --help            show this help message and exit
-  --currency CURRENCY   desired fiat currency for prices
+  --currency CURRENCY   desired fiat currency for prices, default: USD
   --price_kwh PRICE_KWH
-                        electricity price per kwH
+                        electricity price per kwH in your fiat currency, default: 0.1
   -w WATTS, --watts WATTS
-                        power usage of your provider in watts
+                        power usage of your provider in watts, default: 150
   -p PROFIT, --profit PROFIT
-                        desired additional profit beyond electricity costs, (1.0 is 100 percent)
+                        desired additional profit beyond electricity costs, (1.0 is 100 percent), default: 0.1 (10 percent)
   -t THREADS, --threads THREADS
-                        number of threads on golem provider (default is all threads)
+                        number of threads on golem provider. t = 0 is all threads. t < 0 is t less that all threads. t > 1 is t threads. if t is higher than available threads, maximum of all
+                        threads will be used. if all threads - t is less than 1, 1 thread will be used. default: all threads
+  --dry_run             display result but do not actually update
 ```
 
 
