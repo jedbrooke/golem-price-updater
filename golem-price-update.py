@@ -7,7 +7,7 @@ import sys
 import time
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="automatically adjust golem provider prices")
+    parser = argparse.ArgumentParser(description="automatically adjust golem provider prices. GLM Price provided by CoinGecko")
     parser.add_argument("--currency",type=str,help="desired fiat currency for prices, default: USD",default="USD")
     
     # TODO: if there's some kind of API for getting your local electricty costs feel free to submit a PR
