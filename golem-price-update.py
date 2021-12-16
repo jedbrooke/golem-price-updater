@@ -5,6 +5,7 @@ import argparse
 import subprocess
 import sys
 import time
+import shlex
 
 def parse_args():
     parser = argparse.ArgumentParser(description="automatically adjust golem provider prices. GLM Price provided by CoinGecko")
@@ -50,9 +51,16 @@ if __name__ == "__main__":
         print("CPU per hour:",price_per_thread_glm)
     else:
         # set the price
-        golem_path = os.path.expanduser("~/.local/bin/golemsp")
-        subprocess.call([golem_path,"settings","set","--cpu-per-hour",str(price_per_thread_glm)])
-        subprocess.call([golem_path,"settings","set","--env-per-hour","0"])
-        subprocess.call([golem_path,"settings","set","--starting-fee","0"])
+        golem_path = os.path.expanduser("~/.local/bin/ya-provider")
+        cmd = f"{golem_path} preset update --no-interactive --price Duration=0 --price CPU={price_per_thread_glm/3600} --pricing linear vm"
+        print(cmd)
+        subprocess.call(shlex.split(cmd))
+        cmd = f"{golem_path} preset update --no-interactive --price Duration=0 --price CPU={price_per_thread_glm/3600} --pricing linear wasmtime"
+        subprocess.call(shlex.split(cmd))
+        
+        # broken in yagna 0.9.0
+        # subprocess.call([golem_path,"settings","set","--cpu-per-hour",str(price_per_thread_glm)])
+        # subprocess.call([golem_path,"settings","set","--env-per-hour","0"])
+        # subprocess.call([golem_path,"settings","set","--starting-fee","0"])
 
 
