@@ -7,6 +7,7 @@ set this file to run as a cron job every hour (or as often as you see fit)
 ```chmod +x golem-price-update.py```
 
 1. run the program with your settings, and `-u` or `--update_cron` to add it to your crontab to run automatically. (requires the `python-crontab` module)
+    
     example: `python3 golem-price-update.py -w 100 -p 0.5 --update_cron`
 
 
