@@ -36,7 +36,11 @@ optional arguments:
   -p PROFIT, --profit PROFIT
                         desired additional profit beyond electricity costs, (1.0 is 100 percent), default: 0.1 (10 percent)
   -t THREADS, --threads THREADS
-                        number of threads on golem provider. t = 0 is all threads. t < 0 is t less that all threads. t > 1 is t threads. if t is higher than available threads, maximum of all
+                        number of threads on golem provider. 
+                        t = 0 is all threads. 
+                        t < 0 is t less that all threads. 
+                        t > 1 is t threads. 
+                        if t is higher than available threads, maximum of all
                         threads will be used. if all threads - t is less than 1, 1 thread will be used. default: all threads
   -u, --update_cron     run this script every hour with the same settings by adding it to the cron file
   --dry_run             display result but do not actually update, (applied to cron setting as well)
